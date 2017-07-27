@@ -39,7 +39,7 @@ class UserController extends Controller
         $user = new User();
         $user->carnet = $data['carnet'];
 
-        if($this->invalidString($data['first_name']))
+        if($this->invalidString(trim($data['first_name'])))
         {
             return response()->json([
                 'status' => FALSE, 
@@ -47,7 +47,7 @@ class UserController extends Controller
             ]);
         }
 
-        if($this->invalidString($data['last_name']))
+        if($this->invalidString(trim($data['last_name'])))
         {
             return response()->json([
                 'status' => FALSE, 
@@ -55,7 +55,7 @@ class UserController extends Controller
             ]);
         }
 
-        if($this->invalidString($data['nick_name']))
+        if($this->invalidString(trim($data['nick_name'])))
         {
             return response()->json([
                 'status' => FALSE, 
