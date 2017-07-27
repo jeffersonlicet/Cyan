@@ -133,7 +133,7 @@ body {
     background-color: #607d8b!important;
 }
 
-.list-group .list-group-item .list-group-item-heading.app-item-header{ 
+.app-item-header{ 
     font-size:18px!important;
     font-weight: bold;
 }

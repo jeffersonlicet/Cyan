@@ -61,7 +61,6 @@
 		</div>
 
 		<div class="container-fluid">
-			<div class="list-group">
 			<?php foreach($routes as $route) : ?>
 				<div class="panel panel-default">
 					<div class="panel-body app-cursor-pointer" onclick="location.href='<?= URL::to('/route/'.$route->route_id.'/'); ?>'">
@@ -88,7 +87,6 @@
 					</div>
 				</div>
 			<?php endforeach; ?>
-			</div>
 		</div>
 
 		<div id="app-refresh">
