@@ -13,11 +13,11 @@ $(document).ready(function(){
 	$( window ).scroll(function() {
 		var canHide = true;
 		
-		/*$('.carnet-input').each(function(i,o) {
+		$('.carnet-input').each(function(i,o) {
 			if ($(o).is(":focus")) {
 				canHide = false;
 			}
-		});*/
+		});
 
 		if(canHide){
 			$('#app-refresh').show();
