@@ -30,7 +30,7 @@ class RouteController extends Controller
         $passenger = $request->only(['route_id', 'carnet']);
         $passenger['carnet'] = preg_replace('/[^0-9]/', '', $passenger['carnet']);
 
-        if(($route = Route::find($passenger['route_id'])) && ($user = User::where(['carnet' => $passenger['carnet'], 'status' => 1])->first()))
+        if(($route = Route::find($passenger['route_id'])) && ($user = User::where(['carnet' => $passenger['carnet'], 'user_status' => 1])->first()))
         {
             if($route->is_open)
             {

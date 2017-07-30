@@ -74,6 +74,11 @@ class UserController extends Controller
         return response()->json(['status' => true]);
     }
 
+    /**
+     * Check user before send to status view
+     *
+     * @return void
+     */
     public function getStatus(Request $request)
     {
         $data = $request->only(['carnet']);
@@ -81,7 +86,7 @@ class UserController extends Controller
 
         if($user = User::where(['carnet' => $data['carnet']])->first())
         {
-            if($user->status == 1)
+            if($user->user_status == 1)
             {
                 return response()->json([
                     'status' => TRUE, 
@@ -98,6 +103,11 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * Display the user status and available tickets/routes
+     *
+     * @return void
+     */
     public function userStatus($userId = 0)
     {
         return view('status', ['user' => User::with('tickets', 'tickets.route')->find($userId)]); 

@@ -80,7 +80,7 @@
                                     </div>
                                     <div class="row-content">
                                         <h4 class="list-group-item-heading"><?= $user->first_name; ?> <?= $user->last_name; ?></h4>
-                                        <span class="label label-primary"><?= $user->nick_name; ?></span> <span class="label label-<?= $user->status == 1 ? 'primary' : 'danger'; ?>"><?= $user->status == 1 ? 'Cuenta activada' : 'Cuanta no activada'; ?></span>
+                                        <span class="label label-primary"><?= $user->nick_name; ?></span> <span class="label label-<?= $user->user_status == 1 ? 'primary' : 'danger'; ?>"><?= $user->user_status == 1 ? 'Cuenta activada' : 'Cuanta no activada'; ?></span>
                                     </div>
                                 </div>
                             <div class="list-group-separator"></div>
@@ -98,7 +98,7 @@
                                         </div>
                                     </div> <br />
                                 <?php endforeach; ?>
-                            <?php elseif($user->status == 1): ?>
+                            <?php elseif($user->user_status == 1): ?>
                                 <p>No estás anotado en ningún bus.</p>
                             <?php else: ?>
                                 <p>Puedes solicitar la activación de tu cuenta escribiendo a hello@sprkly.net</p>
