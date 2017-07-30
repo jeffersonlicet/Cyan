@@ -17,7 +17,7 @@ class RouteController extends Controller
      */
     public function index()
     {
-        return view('app', ['routes' => Route::with('Tickets')->orderBy('open_at', 'DESC')->get()]);
+        return view('app', ['routes' => Route::with('Tickets')->orderBy('open_at', 'ASC')->get()]);
     }
 
     /**

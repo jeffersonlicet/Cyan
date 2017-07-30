@@ -54,7 +54,7 @@
 					 <button type="button" class="navbar-toggle app-toggler" data-toggle="collapse" data-target=".navbar-inverse-collapse">
 						<i class="material-icons">menu</i>
 					</button>
-					<a class="navbar-brand" href="javascript:void(0)">Rutas LT-SA</a>
+					<a class="navbar-brand" href="<?= URL::to('/'); ?>">Rutas LT-SA &nbsp;&nbsp;&nbsp;<span class="label label-info"><?= Carbon\Carbon::now()->format('g:i:s A'); ?></span></a>
 				</div>
 
 				<div class="navbar-collapse collapse navbar-inverse-collapse">
