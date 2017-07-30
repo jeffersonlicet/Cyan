@@ -13,10 +13,15 @@
 use App\Models\Route;
 
 $app->get('/', 'RouteController@index');
+
 $app->get('/user/create', 'UserController@form');
+$app->get('/user/status', 'UserController@status');
+$app->get('/user/{userId}', 'UserController@userStatus');
+
 $app->get('/route/{routeId}', 'RouteController@single');
 
 $app->group(['prefix' => 'ajax'], function () use ($app) {
 	$app->post('/user/create', 'UserController@create');
+	$app->post('/user/status', 'UserController@getStatus');
 	$app->post('/route/ticket', 'RouteController@ticket');
 });

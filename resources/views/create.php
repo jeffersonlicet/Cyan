@@ -38,9 +38,15 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 	</head>
-
 	<body>
-	<div id="app">
+	
+	<div id="splash">
+		<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+			<circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+		</svg>
+	</div>
+
+	<div id="app" style="display:none">
 		<div class="navbar app-navbar navbar-fixed-top box-shadow--3dp">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -54,6 +60,7 @@
 					<ul class="nav navbar-nav">
 						<li><a href="<?= URL::to('/'); ?>">Rutas</a></li>
 						<li class="active"><a href="javascript:void(0)">Registrarme</a></li>
+						<li><a href="<?= URL::to('/user/status/'); ?>">Status</a></li>
 					</ul>
 				</div>
 			</div>
@@ -63,37 +70,40 @@
 			<div class="row">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<h2>Nuevo usuario</h2>
-
+						<h2>Nuevo usuario</h2>	
+						
 						<div id="app-loading" class="displayN">
 							<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
 								<circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
 							</svg>		
 						</div>
-						
-						<div id="app-form">
-							<div class="form-group label-floating">
-								<label class="control-label" for="carnet">Ingresa tu Carnet</label>
-								<input id="carnet" class="form-control" type="text" required autofocus/>
+	
+						<div id="app-form" class="tab-content">
+  							<div class="tab-pane fade active in" id="student">
+								<div class="form-group label-floating">
+									<label class="control-label" for="carnet">Ingresa tu Carnet</label>
+									<input id="carnet" class="form-control" type="text" required autofocus/>
+								</div>
+								
+								<div class="form-group label-floating">
+									<label class="control-label" for="name">Ingresa tu Nombre</label>
+									<input id="name" class="form-control" type="text" required/>
+								</div>
+								
+								<div class="form-group label-floating">
+									<label class="control-label" for="lastname">Ingresa tu Apellido</label>
+									<input id="lastname" class="form-control" type="text" required/>
+								</div>
+								
+								<div class="form-group label-floating">
+									<label class="control-label" for="nickname">Ingresa tu Apodo</label>
+									<input id="nickname" class="form-control" type="text" required/>
+								</div>
+								
+								<button class="btn btn-raised btn-primary" onclick="users.create(this);">Registrarme</button>
 							</div>
-							
-							<div class="form-group label-floating">
-								<label class="control-label" for="name">Ingresa tu Nombre</label>
-								<input id="name" class="form-control" type="text" required/>
-							</div>
-							
-							<div class="form-group label-floating">
-								<label class="control-label" for="lastname">Ingresa tu Apellido</label>
-								<input id="lastname" class="form-control" type="text" required/>
-							</div>
-							
-							<div class="form-group label-floating">
-								<label class="control-label" for="nickname">Ingresa tu Apodo</label>
-								<input id="nickname" class="form-control" type="text" required/>
-							</div>
-							
-							<button class="btn btn-raised btn-primary" onclick="users.create(this);">Registrarme</button>
-						</div>
+
+						</div>	
 					</div>
 				</div>
             </div>

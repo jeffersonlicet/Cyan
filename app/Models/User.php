@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+
+use Carbon\Carbon, 
+    App\Models\Ticket,
+    Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
@@ -22,4 +25,9 @@ class User extends Model
     protected $fillable = [
         'name', 'email', 'carnet', 'name', 'lastname', 'nickname'
     ];
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class, 'user_id', 'user_id')->where('created_at', '>=', Carbon::today()->toDateString());
+    }
 }

@@ -1,7 +1,10 @@
-$().ready(function(){
+$(document).ready(function(){
 	$.material.init();
 	users.build();
 	route.build();
+
+	$('#splash').hide();
+	$('#app').show();
 });
 
 var users = {
@@ -66,6 +69,60 @@ var users = {
 					context.resetInputs();
 					$('#carnet').focus();
 				} else {
+					$('#app-modal-title').html('Ha ocurrido un error');
+					$('#app-modal-body').html(data.report);
+					$('#modal-message').modal('toggle');
+				}
+			},
+			error: function(data){
+				context.working = false;
+				$('#app-form').show();
+				$('#app-loading').hide();
+
+				$('#app-modal-title').html('Ha ocurrido un error');
+				$('#app-modal-body').html('Por favor intenta de nuevo');
+				$('#modal-message').modal('toggle');
+			}
+		});
+	},
+	getStatus: function(el){
+		if(this.working) return;
+		working = true;
+
+		var context = this,
+			inputs	= [
+				'#carnet'
+			];
+
+		for (var i in inputs)
+		{
+			if($(inputs[i]).val().length === 0) {
+				$(inputs[i]).focus();
+				return;	
+			}
+		}
+		
+		$('#app-form').hide();
+		$('#app-loading').show();
+
+		$.ajax({
+			type: 'POST',
+			url: APP_URL + '/ajax/user/status',
+			data: {
+				carnet: $('#carnet').val()
+			},
+
+			dataType: 'json',
+			success: function(data) {
+				context.working = false;
+				
+				if(data.status){
+					location.href = APP_URL + '/user/'+ data.id;
+
+				} else {
+					context.working = false;
+					$('#app-form').show();
+					$('#app-loading').hide();
 					$('#app-modal-title').html('Ha ocurrido un error');
 					$('#app-modal-body').html(data.report);
 					$('#modal-message').modal('toggle');

@@ -16,6 +16,8 @@ class UserController extends Controller
     public function create(Request $request)
     {
         $data = $request->only(['carnet', 'first_name', 'last_name', 'nick_name']);
+        
+        $data['carnet'] = preg_replace('/[^0-9]/', '', $data['carnet']);
 
         $firewall = Validator::make($data, [
             'carnet' => 'required|unique:users',
@@ -72,6 +74,35 @@ class UserController extends Controller
         return response()->json(['status' => true]);
     }
 
+    public function getStatus(Request $request)
+    {
+        $data = $request->only(['carnet']);
+        $data['carnet'] = preg_replace('/[^0-9]/', '', $data['carnet']);
+
+        if($user = User::where(['carnet' => $data['carnet']])->first())
+        {
+            if($user->status == 1)
+            {
+                return response()->json([
+                    'status' => TRUE, 
+                    'id' => $user->user_id
+                ]);
+
+            } else $report = 'Tu cuenta no está activada';
+
+        } else $report = 'Este usuario no existe';
+
+        return response()->json([
+            'status' => FALSE, 
+            'report' => $report
+        ]);
+    }
+
+    public function userStatus($userId = 0)
+    {
+        return view('status', ['user' => User::with('tickets', 'tickets.route')->find($userId)]); 
+    }
+
     /**
      * Form to create a new user.
      *
@@ -80,6 +111,16 @@ class UserController extends Controller
     public function form()
     {
         return view('create');
+    }
+
+    /**
+     * Show the user status form
+     *
+     * @return void
+     */
+    public function status()
+    {
+        return view('statusform');
     }
 
     /**

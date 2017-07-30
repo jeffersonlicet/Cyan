@@ -32,15 +32,14 @@
 	<link href="<?= URL::to('/'); ?>/css/bootstrap-material-design.min.css" rel="stylesheet">
 	<link href="<?= URL::to('/'); ?>/css/ripples.min.css" rel="stylesheet">
 	<link href="<?= URL::to('/'); ?>/css/app.css" rel="stylesheet">
-
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 	</head>
-
 	<body>
+	
 	<div id="splash">
 		<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
 			<circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
@@ -54,71 +53,64 @@
 					 <button type="button" class="navbar-toggle app-toggler" data-toggle="collapse" data-target=".navbar-inverse-collapse">
 						<i class="material-icons">menu</i>
 					</button>
-					<a class="navbar-brand" href="javascript:void(0)">Rutas LT-SA</a>
+					<a class="navbar-brand" href="<?= URL::to('/'); ?>">Rutas LT-SA</a>
 				</div>
 
 				<div class="navbar-collapse collapse navbar-inverse-collapse">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="<?= URL::to('/'); ?>">Rutas</a></li>
+						<li><a href="<?= URL::to('/'); ?>">Rutas</a></li>
 						<li><a href="<?= URL::to('/user/create'); ?>">Registrarme</a></li>
-						<li><a href="<?= URL::to('/user/status/'); ?>">Status</a></li>
+                        <li class="active"><a href="javascript:void(0)">Status</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 
 		<div class="container-fluid">
-			<?php foreach($routes as $route) : ?>
+			<div class="row">
 				<div class="panel panel-default">
-					<div class="panel-body app-cursor-pointer" onclick="location.href='<?= URL::to('/route/'.$route->route_id.'/'); ?>'">
-						<div class="list-group-item">
-							<div class="row-content">
-								<h2 class="list-group-item-heading app-item-header"><?= $route->route_name; ?> - <?= $route->departure_at->format('g:i A'); ?></h2>
-								<span class="label <?= $route->is_open ? 'label-primary' : 'label-default' ?>"><?= $route->is_open ? 'Abierta' : 'Abre en '. $route->open_time ?></span>
-								<span class="label <?= $route->is_open ? 'label-warning' : 'displayN' ?>">El bus se va en <?= $route->departure_time ?></span>
-								<span class="label <?= $route->is_open ? 'label-danger' : 'displayN' ?>">Hay <?= count($route->tickets).( count($route->tickets) == 1 ? ' persona' : ' personas') ?> </span>
-							</div>	
-						</div>
-					</div>
+					<div class="panel-body">
+						<?php if(!$user) : ?>
+                        <h2>Usuario no encontrado</h2><h3>El usuario solicitado no se encuentra inscrito en el sistema.</h3>
+                        <?php else : ?>
+                        <div class="list-group">
+                             <div class="list-group-item">
+                                <div class="row-action-primary">
+                                        <i class="material-icons">person</i>
+                                    </div>
+                                    <div class="row-content">
+                                        <h4 class="list-group-item-heading"><?= $user->first_name; ?> <?= $user->last_name; ?></h4>
+                                        <span class="label label-primary"><?= $user->nick_name; ?></span> <span class="label label-<?= $user->status == 1 ? 'primary' : 'danger'; ?>"><?= $user->status == 1 ? 'Cuenta activada' : 'Cuanta no activada'; ?></span>
+                                    </div>
+                                </div>
+                            <div class="list-group-separator"></div>
+                            <?php if(count($user->tickets) > 0) : ?>
+                                <h3>Estás anotado en  <?= count($user->tickets); ?>  <?= count($user->tickets) == 1 ? 'ruta' : 'rutas'; ?>:</h3>
+                                <?php foreach($user->tickets as $ticket): ?>
+                                    <div class="panel-body app-cursor-pointer" style="border:1px solid #ccc;border-radius:5px;" onclick="location.href='<?= URL::to('/route/'.$ticket->route->route_id.'/'); ?>'">
+                                        <div class="list-group-item">
+                                            <div class="row-content">
+                                                <h2 class="list-group-item-heading app-item-header"><?= $ticket->route->route_name; ?> - <?= $ticket->route->departure_at->format('g:i A'); ?></h2>
+                                                <span class="label <?= $ticket->route->is_open ? 'label-primary' : 'label-default' ?>"><?= $ticket->route->is_open ? 'Abierta' : 'Abre en '. $ticket->route->open_time ?></span>
+                                                <span class="label <?= $ticket->route->is_open ? 'label-warning' : 'displayN' ?>">El bus se va en <?= $ticket->route->departure_time ?></span>
+                                                <span class="label <?= $ticket->route->is_open ? 'label-danger' : 'displayN' ?>">Hay <?= count($ticket->route->tickets).( count($ticket->route->tickets) == 1 ? ' persona' : ' personas') ?> </span>
+                                            </div>	
+                                        </div>
+                                    </div> <br />
+                                <?php endforeach; ?>
+                            <?php elseif($user->status == 1): ?>
+                                <p>No estás anotado en ningún bus.</p>
+                            <?php else: ?>
+                                <p>Puedes solicitar la activación de tu cuenta escribiendo a hello@sprkly.net</p>
+                            <?php endif; ?>
+                        </div>    
 
-					<div class="<?= !$route->is_open ? 'displayN' : '' ?> panel-footer app-item-footer">
-						<div class="form-group label-floating">
-							<label class="control-label" for="addon2">Ingresa tu carnet</label>
-							<div class="input-group">
-								<input autocomplete="off" id="carnet_<?= $route->route_id; ?>" class="form-control carnet-input" type="text" />
-								<span class="input-group-btn">
-									<a href="javascript:void(0)" onclick="route.ticket(this);" data-route="<?= $route->route_id; ?>" class="btn btn-raised btn-info">Anotarme</a>
-								</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			<?php endforeach; ?>
-		</div>
-
-		<div id="app-refresh">
-			<a href="javascript:location.reload()" class="btn btn-info  btn-fab"><i class="material-icons">cached</i></a>
-		</div>
-	</div>
-
-	<div class="modal" id="modal-loading">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-					<h4 class="modal-title">Cargando</h4>
-				</div>
-				<div class="modal-body">
-					<div id="app-loading">
-						<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-							<circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-						</svg>	
+                        <?php endif; ?>	
 					</div>
 				</div>
-			</div>
+            </div>
 		</div>
 	</div>
-
 	<div class="modal" id="modal-message">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -131,13 +123,10 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
-					<button type="button" class="btn btn-primary" id="app-clean-box" onclick="route.clean();">Anotar amigo</button>
-					<button type="button" class="btn btn-primary" id="app-retry-box" onclick="route.retry();">Intentar de nuevo</button>
 				</div>
 			</div>
 		</div>
 	</div>
-
 	<footer class="footer">
         <p>Patrocinado por: <a href="http://getselfy.net" target="_blank"><img width="36" height="36" src="<?= URL::to('/'); ?>/img/Selfy.png"> <b>Selfy</b></a></p>
     </footer>

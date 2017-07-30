@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\User,
+    App\Models\Ticket,
     Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
@@ -25,5 +26,10 @@ class Ticket extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'user_id');
+    }
+
+    public function route()
+    {
+        return $this->belongsTo(Route::class, 'route_id', 'route_id');
     }
 }
