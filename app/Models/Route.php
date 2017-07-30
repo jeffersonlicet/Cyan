@@ -43,7 +43,7 @@ class Route extends Model
 	 *
 	 * @var array
 	 */
-	protected $appends = ['is_open', 'open_time', 'departure_time'];
+	protected $appends = ['is_open', 'open_time', 'departure_time', 'gone'];
 
 	/**
 	 * Define if the current Route is open
@@ -95,9 +95,23 @@ class Route extends Model
 			'current'  => Carbon::now(),
 			'departure_at'  => $this->departure_at,
 		];
-
+			
 		$times = $this->mutateCarbonDatetimeToTime($datetimes);
-		return $times['departure_at']->diffForHumans($times['current'], true);
+		return $times['current']->diffForHumans($times['departure_at'], true);
+	}
+
+	public function getGoneAttribute()
+	{
+		Carbon::setLocale('es');
+
+		$datetimes = [
+			'current'  => Carbon::now(),
+			'departure_at'  => $this->departure_at,
+		];
+			
+		$times = $this->mutateCarbonDatetimeToTime($datetimes);
+
+		return $times['current']->diff($times['departure_at'], false)->invert == 1;
 	}
 
 	/**

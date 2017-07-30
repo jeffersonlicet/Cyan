@@ -75,7 +75,8 @@
 							<div class="row-content">
 								<h2 class="list-group-item-heading app-item-header"><?= $route->route_name; ?> - <?= $route->departure_at->format('g:i A'); ?></h2>
 								<span class="label <?= $route->is_open ? 'label-primary' : 'label-default' ?>"><?= $route->is_open ? 'Abierta' : 'Abre en '. $route->open_time ?></span>
-								<span class="label <?= $route->is_open ? 'label-warning' : 'displayN' ?>">El bus se va en <?= $route->departure_time ?></span>
+								<span class="label <?= $route->is_open ? 'label-warning' : 'displayN' ?> <?= $route->gone ? 'displayN' : '' ?>">El bus se va en <?= $route->departure_time ?></span>
+								<span class="label <?= $route->is_open ? 'label-warning' : 'displayN' ?> <?= $route->gone ? '' : 'displayN' ?>">El bus se ha ido</span>
 								<span class="label <?= $route->is_open ? 'label-danger' : 'displayN' ?>">Hay <?= count($route->tickets).( count($route->tickets) == 1 ? ' persona' : ' personas') ?> </span>
 							</div>	
 						</div>

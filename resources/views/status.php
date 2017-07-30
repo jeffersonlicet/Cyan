@@ -92,8 +92,9 @@
                                             <div class="row-content">
                                                 <h2 class="list-group-item-heading app-item-header"><?= $ticket->route->route_name; ?> - <?= $ticket->route->departure_at->format('g:i A'); ?></h2>
                                                 <span class="label <?= $ticket->route->is_open ? 'label-primary' : 'label-default' ?>"><?= $ticket->route->is_open ? 'Abierta' : 'Abre en '. $ticket->route->open_time ?></span>
-                                                <span class="label <?= $ticket->route->is_open ? 'label-warning' : 'displayN' ?>">El bus se va en <?= $ticket->route->departure_time ?></span>
-                                                <span class="label <?= $ticket->route->is_open ? 'label-danger' : 'displayN' ?>">Hay <?= count($ticket->route->tickets).( count($ticket->route->tickets) == 1 ? ' persona' : ' personas') ?> </span>
+												<span class="label <?= $ticket->route->is_open ? 'label-warning' : 'displayN' ?> <?= $ticket->route->gone ? 'displayN' : '' ?>">El bus se va en <?= $ticket->route->departure_time ?></span>
+                                               	<span class="label <?= $ticket->route->is_open ? 'label-warning' : 'displayN' ?> <?= $ticket->route->gone ? '' : 'displayN' ?>">El bus se ha ido</span>
+											    <span class="label <?= $ticket->route->is_open ? 'label-danger' : 'displayN' ?>">Hay <?= count($ticket->route->tickets).( count($ticket->route->tickets) == 1 ? ' persona' : ' personas') ?> </span>
                                             </div>	
                                         </div>
                                     </div> <br />
