@@ -52,7 +52,7 @@
 	</div>
 
 	<div id="app" style="display:none">
-		<div class="navbar app-navbar navbar-fixed-top box-shadow--3dp">
+		<div class="navbar app-navbar box-shadow--3dp">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					 <button type="button" class="navbar-toggle app-toggler" data-toggle="collapse" data-target=".navbar-inverse-collapse">
