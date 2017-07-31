@@ -79,6 +79,12 @@ class Route extends Model
 		];
 
 		$times = $this->mutateCarbonDatetimeToTime($datetimes);
+
+		if($times['current']->diff($times['open_at'], false)->invert == 1)
+		{
+			return $times['open_at']->addDays(1)->diffForHumans($times['current'], true);
+		}
+
 		return $times['open_at']->diffForHumans($times['current'], true);
 	}
 
