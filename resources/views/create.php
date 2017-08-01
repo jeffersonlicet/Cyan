@@ -68,6 +68,10 @@
 
 		<div class="container-fluid">
 			<div class="row">
+				<div class="alert alert-dismissible alert-danger">
+				<strong>Atención!</strong>
+				Si usted no es estudiante y desea usar el sistema por favor comunicarse al <b>0416-9304105</b> o escribir un correo con sus datos a <b>jeff@sprkly.net</b> y con gusto le proporcionaremos una cuenta.
+				</div>
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<h2>Nuevo usuario</h2>	
