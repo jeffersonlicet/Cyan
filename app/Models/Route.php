@@ -117,7 +117,7 @@ class Route extends Model
 			
 		$times = $this->mutateCarbonDatetimeToTime($datetimes);
 
-		return $times['current']->diff($times['departure_at'], false)->invert == 1;
+		return $times['current']->diff($times['departure_at'])->invert == 1;
 	}
 
 	/**
