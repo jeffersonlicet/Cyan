@@ -149,10 +149,10 @@
 	<script type="text/javascript">
 		var APP_URL = <?= json_encode(URL::to('/')); ?>
 	</script>
-	<script src="<?= URL::to('/'); ?>/js/jquery-3.2.1.min.js?v=3"></script>
-	<script src="<?= URL::to('/'); ?>/js/bootstrap.min.js?v=3"></script>
-	<script src="<?= URL::to('/'); ?>/js/ripples.min.js?v=3"></script>
-	<script src="<?= URL::to('/'); ?>/js/material.min.js?v=3"></script>
-	<script src="<?= URL::to('/'); ?>/js/app.js?v=3"></script>
+	<script src="<?= URL::to('/'); ?>/js/jquery-3.2.1.min.js?v=4"></script>
+	<script src="<?= URL::to('/'); ?>/js/bootstrap.min.js?v=4"></script>
+	<script src="<?= URL::to('/'); ?>/js/ripples.min.js?v=4"></script>
+	<script src="<?= URL::to('/'); ?>/js/material.min.js?v=4"></script>
+	<script src="<?= URL::to('/'); ?>/js/app.js?v=4"></script>
 	</body>
 </html>
