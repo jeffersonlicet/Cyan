@@ -90,7 +90,8 @@
                         <label class="control-label" for="addon2">Ingresa tu carnet</label>
                         <div class="input-group">
                             <input autocomplete="off" id="carnet_<?= $route->route_id; ?>" class="form-control carnet-input" type="text" />
-                            <span class="input-group-btn">
+                            <p class="help-block">Ingresa tu Carnet (i.e. 1200000) o tu Cédula (i.e. V26000000)</p>
+							<span class="input-group-btn">
                                 <a href="javascript:void(0)" onclick="route.ticket(this);" data-route="<?= $route->route_id; ?>" class="btn btn-raised btn-info">Anotarme</a>
                             </span>
                         </div>
@@ -174,10 +175,10 @@
 	<script type="text/javascript">
 		var APP_URL = <?= json_encode(URL::to('/')); ?>
 	</script>
-	<script src="<?= URL::to('/'); ?>/js/jquery-3.2.1.min.js?v=3"></script>
-	<script src="<?= URL::to('/'); ?>/js/bootstrap.min.js?v=3"></script>
-	<script src="<?= URL::to('/'); ?>/js/ripples.min.js?v=3"></script>
-	<script src="<?= URL::to('/'); ?>/js/material.min.js?v=3"></script>
-	<script src="<?= URL::to('/'); ?>/js/app.js?v=3"></script>
+	<script src="<?= URL::to('/'); ?>/js/jquery-3.2.1.min.js?v=4"></script>
+	<script src="<?= URL::to('/'); ?>/js/bootstrap.min.js?v=4"></script>
+	<script src="<?= URL::to('/'); ?>/js/ripples.min.js?v=4"></script>
+	<script src="<?= URL::to('/'); ?>/js/material.min.js?v=4"></script>
+	<script src="<?= URL::to('/'); ?>/js/app.js?v=4"></script>
 	</body>
 </html>

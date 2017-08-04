@@ -30,7 +30,7 @@ var users = {
 	working: false,
 	build: function(){
 		$('#carnet').on('keyup', function(e) {
-			$(this).val($(this).val().replace(/[^0-9]/g, ''));
+			$(this).val($(this).val().replace(/[^0-9vV]/g, ''));
 		});
 	},
 	resetInputs: function(){
@@ -173,7 +173,7 @@ var route = {
 				e.stopPropagation();
 				$('#app-refresh').hide();
 			}).on('keyup', function(e) {
-				$(this).val($(this).val().replace(/[^0-9]/g, ''));
+				$(this).val($(this).val().replace(/[^0-9Vv]/g, ''));
 			});		
 		});
 	},

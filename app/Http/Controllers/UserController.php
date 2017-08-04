@@ -82,7 +82,7 @@ class UserController extends Controller
     public function getStatus(Request $request)
     {
         $data = $request->only(['carnet']);
-        $data['carnet'] = preg_replace('/[^0-9]/', '', $data['carnet']);
+        $data['carnet'] = strtolower(preg_replace('/[^0-9vV]/', '', $data['carnet']));
 
         if($user = User::where(['carnet' => $data['carnet']])->first())
         {

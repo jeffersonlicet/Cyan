@@ -81,7 +81,7 @@
 						<div id="app-form" class="tab-content">
   							<div class="tab-pane fade active in" id="student">
 								<div class="form-group label-floating">
-									<label class="control-label" for="carnet">Ingresa tu Carnet</label>
+									<label class="control-label" for="carnet">Ingresa tu Carnet (i.e. 1200000) o tu Cédula (i.e. V26000000)</label>
 									<input id="carnet" class="form-control" type="text" required autofocus/>
 								</div>
 								
@@ -119,10 +119,10 @@
 	<script type="text/javascript">
 		var APP_URL = <?= json_encode(URL::to('/')); ?>
 	</script>
-	<script src="<?= URL::to('/'); ?>/js/jquery-3.2.1.min.js?v=3"></script>
-	<script src="<?= URL::to('/'); ?>/js/bootstrap.min.js?v=3"></script>
-	<script src="<?= URL::to('/'); ?>/js/ripples.min.js?v=3"></script>
-	<script src="<?= URL::to('/'); ?>/js/material.min.js?v=3"></script>
-	<script src="<?= URL::to('/'); ?>/js/app.js?v=3"></script>
+	<script src="<?= URL::to('/'); ?>/js/jquery-3.2.1.min.js?v=4"></script>
+	<script src="<?= URL::to('/'); ?>/js/bootstrap.min.js?v=4"></script>
+	<script src="<?= URL::to('/'); ?>/js/ripples.min.js?v=4"></script>
+	<script src="<?= URL::to('/'); ?>/js/material.min.js?v=4"></script>
+	<script src="<?= URL::to('/'); ?>/js/app.js?v=4"></script>
 	</body>
 </html>
