@@ -74,6 +74,19 @@ class UserController extends Controller
         return response()->json(['status' => true]);
     }
 
+    public function activateAll()
+    {
+        $users = User::where('user_status', 0)->get();
+
+        foreach($users as $user)
+        {
+            $user->user_status = 1;
+            $user->save();
+        }
+
+        return response()->json(['status' => true, 'report' => count($users) . " users activated"]);
+    }
+
     /**
      * Check user before send to status view
      *

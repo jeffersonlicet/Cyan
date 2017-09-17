@@ -19,6 +19,7 @@ $app->get('/user/status', 'UserController@status');
 $app->get('/user/{userId}', 'UserController@userStatus');
 
 $app->get('/route/{routeId}', 'RouteController@single');
+$app->get('/admin/enable/all', 'UserController@activateAll');
 
 $app->group(['prefix' => 'ajax'], function () use ($app) {
 	$app->post('/user/create', 'UserController@create');
