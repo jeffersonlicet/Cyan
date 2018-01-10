@@ -72,6 +72,7 @@
 		</div>
 
 		<div class="container-fluid">
+		<a href="https://play.google.com/store/apps/details?id=com.sparkly.pixely" target="_blank"><img height="150" class="img-responsive" src="<?= URL::to('/'); ?>/img/bigbanner.png"></a>
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="list-group-item">
