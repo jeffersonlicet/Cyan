@@ -81,7 +81,7 @@
 		</div>
 
 		<div class="container-fluid" style="margin: 0 auto;">
-			<a href="https://play.google.com/store/apps/details?id=com.sparkly.selfy" target="_blank"><img height="100" class="img-responsive" src="<?= URL::to('/'); ?>/img/selfyimage.png"></a>
+			<a href="https://play.google.com/store/apps/details?id=com.sparkly.selfy" target="_blank"><img height="100" class="img-responsive" style="max-width: 50%; margin: 0 auto" src="<?= URL::to('/'); ?>/img/selfyimage.png"></a>
 		<br />
 		    <div class="panel panel-default">
                 <div class="panel-body">
