@@ -32,7 +32,7 @@
 	<link href="<?= URL::to('/'); ?>/css/bootstrap-material-design.min.css" rel="stylesheet">
 	<link href="<?= URL::to('/'); ?>/css/ripples.min.css" rel="stylesheet">
     <link href="<?= URL::to('/'); ?>/css/app.css" rel="stylesheet">
-    
+
     <meta property="og:url" content="http://usb.azurewebsites.net" />
     <meta property="og:title" content="Sistema de rutas: LT-SA" />
     <meta property="og:description" content="Sistema de rutas: LT-SA" />
@@ -42,6 +42,15 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-56940433-10"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-56940433-10');
+	</script>
 	</head>
 
 	<body>
@@ -55,7 +64,7 @@
 		<div class="navbar app-navbar box-shadow--3dp">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					 <button type="button" class="navbar-toggle app-toggler" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+					<button type="button" class="navbar-toggle app-toggler" data-toggle="collapse" data-target=".navbar-inverse-collapse">
 						<i class="material-icons">menu</i>
 					</button>
 					<a class="navbar-brand" href="<?= URL::to('/'); ?>">Rutas LT-SA &nbsp;&nbsp;&nbsp;<span class="label label-info"><?= Carbon\Carbon::now()->format('g:i:s A'); ?></span></a>
@@ -71,9 +80,9 @@
 			</div>
 		</div>
 
-		<div class="container-fluid">
-			<center><a href="https://play.google.com/store/apps/details?id=com.sparkly.pixely" target="_blank"><img height="100" class="img-responsive" src="<?= URL::to('/'); ?>/img/bigbanner.png"></a></center>
-		<br /> 
+		<div class="container-fluid" style="margin: 0 auto;">
+			<a href="https://play.google.com/store/apps/details?id=com.sparkly.selfy" target="_blank"><img height="100" class="img-responsive" src="<?= URL::to('/'); ?>/img/selfyimage.png"></a>
+		<br />
 		    <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="list-group-item">
